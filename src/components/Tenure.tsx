@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 interface Tenure {
     tenure: number;
     setTenure: (val: number) => void;
@@ -6,8 +8,11 @@ interface Tenure {
 function Tenure({ tenure, setTenure }: Tenure) {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTenure(Number(e.target.value));
-        console.log(`Tenure : ${tenure}`);
     };
+
+    useEffect(() => {
+        console.log(`Tenure : ${tenure}`);
+    }, [tenure]);
 
     return (
         <fieldset className="mb-4 p-4 border-2 border-gray-700 rounded-lg flex-1 max-w-xs">

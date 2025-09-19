@@ -1,10 +1,15 @@
-import { useState } from "react";
 import Amount from "./components/Amount";
 import Tenure from "./components/Tenure";
 
-function InputForm() {
-    const [amount, setAmount] = useState<number>(100000);
-    const [tenure, setTenure] = useState<number>(2);
+export interface UserInput {
+    amount: number;
+    setAmount: (val: number) => void;
+    tenure: number;
+    setTenure: (val: number) => void;
+}
+
+function InputForm({ userInput }: { userInput: UserInput }) {
+    const { amount, setAmount, tenure, setTenure } = userInput;
 
     return (
         <div className="flex gap-4 justify-center">

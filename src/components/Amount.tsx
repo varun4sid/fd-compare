@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 interface Amount {
     amount: number;
     setAmount: (val: number) => void;
@@ -6,8 +8,11 @@ interface Amount {
 function Amount({ amount, setAmount }: Amount) {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setAmount(Number(e.target.value));
-        console.log(`Amount : ${amount}`);
     };
+
+    useEffect(() => {
+        console.log(`Amount : ${amount}`);
+    }, [amount]);
 
     return (
         <fieldset className="mb-4 p-4 border-2 border-gray-700 rounded-lg flex-1 max-w-xs">
