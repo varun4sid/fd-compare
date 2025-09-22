@@ -1,15 +1,13 @@
+import { useContext } from "react";
 import Amount from "./components/Amount";
 import Tenure from "./components/Tenure";
+import { UserInputContext } from "./AppContext";
+import type { UserInputContextType } from "./AppContext";
 
-export interface UserInput {
-    amount: number;
-    setAmount: (val: number) => void;
-    tenure: number;
-    setTenure: (val: number) => void;
-}
-
-function InputForm({ userInput }: { userInput: UserInput }) {
-    const { amount, setAmount, tenure, setTenure } = userInput;
+function InputForm() {
+    const { amount, setAmount, tenure, setTenure } = useContext(
+        UserInputContext
+    ) as UserInputContextType;
 
     return (
         <div className="flex gap-4 justify-center">

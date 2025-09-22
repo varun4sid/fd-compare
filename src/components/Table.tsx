@@ -1,8 +1,16 @@
-import schemes from "../db";
-import type { Scheme } from "../db";
-
 function Table() {
-    return <table></table>;
+    return (
+        <table>
+            <thead>
+                <tr>
+                    <th>Features</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+    );
 }
 
 export default Table;
