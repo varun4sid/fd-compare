@@ -11,6 +11,7 @@ interface Feature {
 }
 
 const features: Feature[] = [
+    { key: "min_deposit", label: "Min Deposit" },
     { key: "max_interest", label: "Max Interest" },
     { key: "maturity_amount", label: "Maturity Amount" },
     { key: "total_gains", label: "Total Gains" },
@@ -54,24 +55,51 @@ function Table() {
                             );
                             let value;
                             switch (feature.key) {
-                                case "max_interest":
+                                case "min_deposit":
                                     value = bank?.min_deposit
                                         ? bank.min_deposit
                                         : "-";
                                     break;
-                                case "maturity_amount":
+                                case "max_interest":
                                     value = bank?.max_interest
                                         ? bank.max_interest
                                         : "-";
                                     break;
+                                case "maturity_amount":
+                                    if (bank) {
+                                        const principal = amount;
+                                        const rate = bank.max_interest;
+                                        const n = 4; // quarterly
+                                        const t = tenure;
+                                        const maturity =
+                                            principal *
+                                            Math.pow(
+                                                1 + rate / (100 * n),
+                                                n * t
+                                            );
+                                        value = maturity.toFixed(2);
+                                    } else {
+                                        value = "-";
+                                    }
+                                    break;
                                 case "total_gains":
-                                    value = bank
-                                        ? (
-                                              (bank.max_interest / 100) *
-                                              amount *
-                                              tenure
-                                          ).toFixed(2)
-                                        : "-";
+                                    if (bank) {
+                                        const principal = amount;
+                                        const rate = bank.max_interest;
+                                        const n = 4; // quarterly
+                                        const t = tenure;
+                                        const maturity =
+                                            principal *
+                                            Math.pow(
+                                                1 + rate / (100 * n),
+                                                n * t
+                                            );
+                                        value = (maturity - principal).toFixed(
+                                            2
+                                        );
+                                    } else {
+                                        value = "-";
+                                    }
                                     break;
                                 case "instant_booking":
                                     value = !scheme ? (

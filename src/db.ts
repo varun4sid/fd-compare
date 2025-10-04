@@ -13,7 +13,7 @@ const schemes: Array<Scheme> = [
         id: 1,
         bank: "SBI",
         min_deposit: 1000,
-        max_interest: 6.8,
+        max_interest: 7.45,
         instant_booking: true,
         account_required: false,
         dicgc_insurance: true,
