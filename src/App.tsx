@@ -15,7 +15,9 @@ function App() {
             <br />
             <InputForm />
             <br />
-            <Table />
+            <div className="flex justify-center items-center">
+                <Table />
+            </div>
         </UserInputContext>
     );
 }

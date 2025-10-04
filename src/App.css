@@ -5,4 +5,24 @@
     margin: 0 auto;
     padding: 2rem;
     text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+td,
+th {
+    border: 2px solid oklch(37.3% 0.034 259.733);
+    padding: 10px;
+}
+
+.tick-svg {
+    height: 36px;
+    width: 36px;
+    fill: green;
+}
+
+.cross-svg {
+    height: 36px;
+    width: 36px;
+    fill: red;
 }
