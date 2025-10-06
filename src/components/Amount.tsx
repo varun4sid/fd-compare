@@ -16,7 +16,7 @@ function Amount({ amount, setAmount }: Amount) {
 
     return (
         <fieldset className="mb-4 p-4 border-2 border-gray-700 rounded-lg flex-1 max-w-xs">
-            <legend className="font-semibold  px-2">Amount</legend>
+            <legend className="font-semibold  px-2">Amount (&#8377;)</legend>
             <input
                 type="number"
                 id="amount"

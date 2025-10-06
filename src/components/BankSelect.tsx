@@ -15,7 +15,7 @@ function BankSelect(props: BankSelectProps) {
             <label className=""></label>
             <select value={props.scheme} onChange={handleChangeScheme}>
                 <option value="" disabled>
-                    Select
+                    Select bank
                 </option>
                 {schemes.map((scheme) => (
                     <option key={scheme.id} value={scheme.id.toString()}>

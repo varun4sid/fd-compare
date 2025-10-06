@@ -48,21 +48,22 @@ function Table() {
             <tbody>
                 {features.map((feature) => (
                     <tr key={feature.key}>
-                        <td className="left">{feature.label}</td>
+                        <td className="left font-bold">{feature.label}</td>
                         {[scheme1, scheme2, scheme3].map((scheme, index) => {
                             const bank = schemes.find(
                                 (s) => s.id.toString() === scheme
                             );
                             let value;
+                            let styles;
                             switch (feature.key) {
                                 case "min_deposit":
                                     value = bank?.min_deposit
-                                        ? bank.min_deposit
+                                        ? String("₹ " + bank.min_deposit)
                                         : "-";
                                     break;
                                 case "max_interest":
                                     value = bank?.max_interest
-                                        ? bank.max_interest
+                                        ? bank.max_interest + "%"
                                         : "-";
                                     break;
                                 case "maturity_amount":
@@ -97,6 +98,8 @@ function Table() {
                                         value = (maturity - principal).toFixed(
                                             2
                                         );
+                                        value = "+ ₹" + value;
+                                        styles = "text-green-600 font-semibold";
                                     } else {
                                         value = "-";
                                     }
@@ -129,7 +132,11 @@ function Table() {
                                     );
                                     break;
                             }
-                            return <td key={index}>{value}</td>;
+                            return (
+                                <td key={index} className={styles}>
+                                    {value}
+                                </td>
+                            );
                         })}
                     </tr>
                 ))}
